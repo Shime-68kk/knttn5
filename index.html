@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Để Mai Tính</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="css/goc.css">
+<link rel="stylesheet" href="css/khung.css">
+<link rel="stylesheet" href="css/hieu-ung.css">
+<link rel="stylesheet" href="css/trang/mo-dau.css">
+<link rel="stylesheet" href="css/trang/buoi-toi.css">
+<link rel="stylesheet" href="css/trang/ban-chat.css">
+<link rel="stylesheet" href="css/trang/con-so.css">
+<link rel="stylesheet" href="css/trang/the-gioi.css">
+<link rel="stylesheet" href="css/trang/dau-hieu.css">
+<link rel="stylesheet" href="css/trang/hoc-tap.css">
+<link rel="stylesheet" href="css/trang/cuoc-song.css">
+<link rel="stylesheet" href="css/trang/cong-thuc.css">
+<link rel="stylesheet" href="css/trang/giai-phap.css">
+<link rel="stylesheet" href="css/trang/ket.css">
+<script>
+  // Bật trạng thái chờ hiệu ứng trước khi trang vẽ, tránh nháy nội dung
+  document.documentElement.classList.add('co-js');
+  if (location.search.includes('chup')) document.documentElement.classList.add('chup');
+</script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+
+<!-- Thanh trên cùng: tiến độ cuộn và phần đang trình bày -->
+<header class="thanh-tren" aria-hidden="true">
+  <span class="tien-do" id="tien-do"></span>
+  <span class="thanh-nhom">Nhóm 05</span>
+  <span class="thanh-phan" id="thanh-phan">Mở đầu</span>
+</header>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="nguoi" viewBox="0 0 40 80">
+    <circle cx="20" cy="12" r="10" />
+    <path d="M4 34a16 16 0 0 1 32 0v26H28v20H12V60H4z" />
+  </symbol>
+</svg>
+
+<main>
+
+  <!-- ============ BÌA (ghim: ảnh nằm trong lòng chữ, lăn chuột thì lao xuyên qua chữ) ============ -->
+  <section class="phan ghim bia" id="mo-dau" data-ten="Mở đầu" data-hieu-ung="bia" style="--dai:2.6">
+    <div class="dinh bia-dinh">
+      <div class="bia-anh" aria-hidden="true"></div>
+      <canvas class="bia-mat-na" aria-hidden="true"></canvas>
+      <h1 class="an-di">Sự trì hoãn ở giới trẻ và những ảnh hưởng đến học tập, cuộc sống</h1>
+      <div class="khung bia-noi">
+        <div class="bia-dau nhan">
+          <span>Nhóm 05</span>
+          <span>Kỹ năng thuyết trình, tháng 11 năm 2026</span>
+          <span>Hạn nộp còn <b class="so-lieu do" id="dem-nguoc">09:59</b></span>
+        </div>
+        <div class="bia-chan">
+          <p class="bia-phu">và những ảnh hưởng đến học tập, cuộc sống</p>
+          <p class="goi-cuon nhan"><i></i>Lăn chuột để bắt đầu</p>
+        </div>
+      </div>
+      <p class="bia-cau-sau">Mỗi tối, chuyện lại bắt đầu như thế này.</p>
+    </div>
+  </section>
+
+  <!-- ============ MỘT BUỔI TỐI (ghim, 5 nấc cuộn) ============ -->
+  <section class="phan ghim toi" id="buoi-toi" data-ten="Một buổi tối" data-hieu-ung="buoi-toi" style="--dai:5">
+    <div class="dinh">
+      <div class="toi-anh" aria-hidden="true"></div>
+      <div class="khung hai-cot">
+        <div>
+          <h2 class="tieu-de">Một buổi tối quen thuộc</h2>
+          <ol class="dong-thoi-gian">
+            <li><time class="so-lieu">20:00</time><span>Mở sách, quyết tâm học.</span></li>
+            <li><time class="so-lieu">20:05</time><span>Xem điện thoại một chút.</span></li>
+            <li><time class="so-lieu">21:40</time><span>Thêm một video nữa.</span></li>
+            <li><time class="so-lieu">23:30</time><span>Sách vẫn mở ở trang đầu.</span></li>
+          </ol>
+          <p class="cau-chot" data-cho><span class="da da-hong">Bạn có thấy quen?</span></p>
+        </div>
+        <div class="dien-thoai" aria-hidden="true">
+          <div class="man-hinh">
+            <div class="dt-gio" id="dt-gio">20:00</div>
+            <div class="dt-ngay">Thứ Hai</div>
+            <div class="dt-thong-bao">
+              <div class="tb" data-tb="1"><b>Tin nhắn</b><span>Nhóm lớp có 3 tin nhắn mới</span></div>
+              <div class="tb" data-tb="2"><b>Video</b><span>Kênh bạn theo dõi vừa đăng video</span></div>
+              <div class="tb" data-tb="2"><b>Mạng xã hội</b><span>12 người đã bày tỏ cảm xúc</span></div>
+              <div class="tb tb-pin" data-tb="3"><b>Pin yếu</b><span>Còn 5%</span></div>
+            </div>
+            <div class="dt-su-dung">Thời gian dùng máy hôm nay<b id="dt-su-dung">0 phút</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NỘI DUNG ============ -->
+  <section class="phan thuong" id="noi-dung" data-ten="Nội dung" data-hieu-ung="noi-dung">
+    <div class="khung">
+      <h2 class="tieu-de lon">Chúng ta sẽ đi qua <span class="da da-vang">3 phần</span></h2>
+      <ol class="ba-phan">
+        <li style="--mau: var(--da-vang)"><span class="bp-so">01</span><h3>Bản chất và dấu hiệu</h3><p>Trì hoãn thật ra là gì?</p></li>
+        <li style="--mau: var(--da-hong)"><span class="bp-so">02</span><h3>Ảnh hưởng</h3><p>Đến việc học và cuộc sống</p></li>
+        <li style="--mau: var(--da-xanh)"><span class="bp-so">03</span><h3>Giải pháp</h3><p>Bắt đầu thay đổi từ đâu?</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 1: BẢN CHẤT (ghim, mốc chạy quanh vòng lặp theo cuộn) ============ -->
+  <section class="phan ghim" id="ban-chat" data-ten="Phần 1 / Bản chất" data-hieu-ung="ban-chat" style="--dai:4">
+    <div class="dinh">
+      <div class="khung hai-cot">
+        <div>
+          <h2 class="tieu-de lon">Trì hoãn là <span class="da da-vang">né tránh cảm xúc</span></h2>
+          <div class="giay-xe">
+            <p class="dan">Ta biết việc cần làm. Ta chỉ muốn tránh cảm giác chán, lo hay sợ làm sai đi kèm với nó.</p>
+            <p class="nguon">Sirois và Pychyl, 2013</p>
+          </div>
+        </div>
+        <div class="vong-lap" aria-label="Vòng lặp trì hoãn gồm 5 bước">
+          <svg class="vong-duong" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="vong-nen" cx="50" cy="50" r="37" />
+            <circle class="vong-chay" cx="50" cy="50" r="37" pathLength="1" />
+            <rect class="vong-moc" x="-1.8" y="-1.8" width="3.6" height="3.6" />
+          </svg>
+          <p class="vong-tam viet-tay">vòng lặp<br>trì hoãn</p>
+          <ol>
+            <li style="--goc:-90deg"><b>Việc khó</b><span>Bài luận 3.000 chữ</span></li>
+            <li style="--goc:-18deg"><b>Khó chịu</b><span>Chán, lo, sợ sai</span></li>
+            <li style="--goc:54deg"><b>Né tránh</b><span>Mở điện thoại</span></li>
+            <li style="--goc:126deg"><b>Nhẹ nhõm</b><span>Dễ chịu được một lúc</span></li>
+            <li style="--goc:198deg"><b>Áp lực</b><span>Hạn chót gần hơn</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 1: CON SỐ (ghim, tô người theo cuộn) ============ -->
+  <section class="phan ghim" id="con-so" data-ten="Phần 1 / Con số" data-hieu-ung="con-so" style="--dai:3">
+    <div class="dinh">
+      <div class="khung">
+        <h2 class="tieu-de lon">Cứ 10 sinh viên, <span class="da da-vang">8 đến 9 người</span> trì hoãn</h2>
+        <div class="bieu-nguoi">
+          <p class="ngoac ngoac-tren" data-cho><b class="so-to" data-but="khoanh" data-mau="do"><span class="dem" data-den="80">0</span>–<span class="dem" data-den="95">0</span>%</b><span>sinh viên đại học có trì hoãn</span></p>
+          <svg><use href="#nguoi" /></svg><svg><use href="#nguoi" /></svg><svg><use href="#nguoi" /></svg>
+          <svg><use href="#nguoi" /></svg><svg><use href="#nguoi" /></svg><svg><use href="#nguoi" /></svg>
+          <svg><use href="#nguoi" /></svg><svg><use href="#nguoi" /></svg><svg><use href="#nguoi" /></svg>
+          <svg><use href="#nguoi" /></svg>
+          <p class="ngoac ngoac-duoi" data-cho><b class="so-to">gần <span class="dem" data-den="50">0</span>%</b><span>trì hoãn thường xuyên, đến mức gây hại</span></p>
+        </div>
+        <p class="nguon">Steel, 2007, tổng hợp từ nhiều khảo sát sinh viên</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 1: TOÀN CẦU (ghim, bản đồ hiện theo cuộn) ============ -->
+  <section class="phan ghim" id="the-gioi" data-ten="Phần 1 / Toàn cầu" data-hieu-ung="the-gioi" style="--dai:2.6">
+    <div class="dinh">
+      <div class="khung">
+        <div class="dau-ban-do">
+          <h2 class="tieu-de lon">Ở đâu cũng có</h2>
+          <p class="cau-so"><b class="so-to"><span class="dem" data-den="15">0</span>–<span class="dem" data-den="20">0</span>%</b>người trưởng thành trì hoãn kéo dài, thành thói quen <span class="nguon">Steel, 2007</span></p>
+        </div>
+        <div class="ban-do">
+          <canvas aria-hidden="true"></canvas>
+          <svg class="duong-noi" viewBox="0 0 360 140" aria-hidden="true"></svg>
+          <ul class="diem" aria-label="Một số nơi đã nghiên cứu về trì hoãn">
+            <li style="--kd:-100; --vd:57" class="nhan-tren"><b>Canada</b><span>Steel, Pychyl</span></li>
+            <li style="--kd:-97; --vd:39" class="nhan-duoi"><b>Hoa Kỳ</b><span>Tice và Baumeister</span></li>
+            <li style="--kd:10; --vd:51" class="nhan-trai"><b>Đức</b><span>Gollwitzer</span></li>
+            <li style="--kd:16; --vd:62" class="nhan-tren"><b>Thụy Điển</b><span>3.525 sinh viên</span></li>
+            <li style="--kd:128; --vd:37" class="nhan-phai"><b>Hàn Quốc</b><span>33 nghiên cứu</span></li>
+            <li style="--kd:106; --vd:15" class="nhan-duoi diem-vn"><b>Việt Nam</b><span>và chính chúng ta</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 1: DẤU HIỆU (tiêu đề ghim bên trái, từng dòng được tick khi cuộn qua) ============ -->
+  <section class="phan thuong" id="dau-hieu" data-ten="Phần 1 / Dấu hiệu" data-hieu-ung="dau-hieu">
+    <div class="khung dau-hieu-luoi">
+      <div class="dau-hieu-trai">
+        <h2 class="tieu-de lon">5 dấu hiệu nhận biết</h2>
+        <p class="cau-hoi viet-tay" data-cho>Bạn thấy mình trong <span class="da da-vang">mấy dấu hiệu?</span></p>
+      </div>
+      <ol class="ds-dau-hieu">
+        <li><i class="o-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c3 2 4 4 6 6 3-6 7-11 12-15" /></svg></i><b>Chỉ bắt tay vào làm khi sát hạn chót</b><span>Làm dồn vào đêm cuối</span></li>
+        <li><i class="o-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c3 2 4 4 6 6 3-6 7-11 12-15" /></svg></i><b>Hứa “để mai” nhiều lần cho cùng một việc</b><span>Danh sách việc không vơi</span></li>
+        <li><i class="o-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c3 2 4 4 6 6 3-6 7-11 12-15" /></svg></i><b>Ngồi vào bàn là cầm điện thoại</b><span>Lướt mạng thay vì làm</span></li>
+        <li><i class="o-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c3 2 4 4 6 6 3-6 7-11 12-15" /></svg></i><b>Làm việc phụ để né việc chính</b><span>Dọn phòng trước kỳ thi</span></li>
+        <li><i class="o-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c3 2 4 4 6 6 3-6 7-11 12-15" /></svg></i><b>Biết sẽ bị thiệt mà vẫn hoãn</b><span>Định nghĩa khoa học, Steel 2007</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 2: HỌC TẬP (ghim, biểu đồ vẽ theo cuộn) ============ -->
+  <section class="phan ghim" id="hoc-tap" data-ten="Phần 2 / Học tập" data-hieu-ung="hoc-tap" style="--dai:3">
+    <div class="dinh">
+      <div class="khung hai-cot hoc-tap-luoi">
+        <div>
+          <h2 class="tieu-de lon">Đầu kỳ nhẹ nhõm, <span class="da da-hong">cuối kỳ trả giá</span></h2>
+          <div class="so-ben" data-cho>
+            <p class="cau-so"><b class="so-to"><span class="dem" data-den="33">0</span> nghiên cứu</b>với <strong><span class="dem" data-den="38529" data-tg="2200">0</span> người</strong> cho thấy: trì hoãn càng nhiều, kết quả học tập càng thấp.</p>
+            <p class="nguon">Kim và Seo, 2015</p>
+          </div>
+        </div>
+        <figure class="bieu-do">
+          <svg viewBox="0 0 520 340" role="img" aria-label="Biểu đồ: người trì hoãn ít căng thẳng đầu kỳ nhưng căng thẳng hơn hẳn vào cuối kỳ">
+            <g class="truc">
+              <line x1="30" y1="24" x2="30" y2="290" />
+              <line x1="30" y1="290" x2="510" y2="290" />
+              <text x="30" y="12" class="truc-chu">Mức căng thẳng</text>
+              <text x="30" y="316" class="truc-chu">Đầu học kỳ</text>
+              <text x="510" y="316" class="truc-chu" text-anchor="end">Cuối học kỳ</text>
+            </g>
+            <path pathLength="1" class="duong duong-on" d="M30 176 C 190 168, 340 162, 500 150" />
+            <path pathLength="1" class="duong duong-tre" d="M30 246 C 220 246, 330 196, 500 46" />
+            <g class="giao" id="diem-giao"><rect x="-6" y="-6" width="12" height="12" /><text y="30" text-anchor="middle">đảo chiều</text></g>
+            <text class="nhan-duong nhan-tre" x="380" y="44" text-anchor="end">Người hay trì hoãn</text>
+            <text class="nhan-duong nhan-on" x="34" y="164">Người không trì hoãn</text>
+          </svg>
+          <p class="ghi-cuoi viet-tay" data-cho>căng thẳng hơn, ốm nhiều hơn, điểm thấp hơn</p>
+          <figcaption class="nguon">Minh hoạ xu hướng theo Tice và Baumeister, 1997</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 2: CUỘC SỐNG (ghim, bút dạ quang quét từng vấn đề theo cuộn) ============ -->
+  <section class="phan ghim" id="cuoc-song" data-ten="Phần 2 / Cuộc sống" data-hieu-ung="cuoc-song" style="--dai:3">
+    <div class="dinh">
+      <div class="khung hai-cot">
+        <div>
+          <h2 class="tieu-de lon">Lan sang cả cuộc sống</h2>
+          <p class="cau-so"><b class="so-to"><span class="dem" data-den="3525" data-tg="2000">0</span> sinh viên</b>Thụy Điển được theo dõi 9 tháng. Ai trì hoãn nhiều hơn thì về sau gặp nhiều vấn đề hơn.</p>
+          <div class="polaroid-cap" aria-hidden="true">
+            <figure class="polaroid" style="--xoay:-6deg"><img src="anh/co-don.jpg" alt=""><figcaption class="viet-tay">một mình, lúc nửa đêm</figcaption></figure>
+            <figure class="polaroid" style="--xoay:5deg"><img src="anh/bao-thuc.jpg" alt=""><figcaption class="viet-tay">ngủ chẳng đủ giấc</figcaption></figure>
+          </div>
+          <p class="nguon">Johansson và cộng sự, 2023. Đây là mối liên hệ, trì hoãn chưa chắc là nguyên nhân duy nhất.</p>
+        </div>
+        <ul class="van-de">
+          <li><small>Tinh thần</small><span>Trầm cảm</span></li>
+          <li><small>Tinh thần</small><span>Lo âu</span></li>
+          <li><small>Tinh thần</small><span>Căng thẳng</span></li>
+          <li><small>Cơ thể</small><span>Đau vai, tay</span></li>
+          <li><small>Lối sống</small><span>Ngủ kém</span></li>
+          <li><small>Lối sống</small><span>Ít vận động</span></li>
+          <li><small>Xã hội</small><span>Cô đơn</span></li>
+          <li><small>Xã hội</small><span>Khó khăn tài chính</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 3: CÔNG THỨC (ghim, tử số rồi mẫu số đổi màu theo cuộn) ============ -->
+  <section class="phan ghim" id="cong-thuc" data-ten="Phần 3 / Công thức" data-hieu-ung="cong-thuc" style="--dai:2.6">
+    <div class="dinh">
+      <div class="khung">
+        <h2 class="tieu-de lon">Công thức của <span class="da da-xanh">động lực</span></h2>
+        <div class="cong-thuc" role="img" aria-label="Động lực bằng kỳ vọng nhân giá trị, chia cho bốc đồng nhân độ trễ">
+          <span class="ve-trai">Động lực</span>
+          <span class="dau-bang">=</span>
+          <div class="phan-so">
+            <div class="tu-so">
+              <span class="bien" data-huong="len"><b>Kỳ vọng</b><small class="viet-tay">tin mình làm được</small></span>
+              <i>×</i>
+              <span class="bien" data-huong="len"><b>Giá trị</b><small class="viet-tay">thấy việc có ý nghĩa</small></span>
+            </div>
+            <div class="gach-phan-so"></div>
+            <div class="mau-so">
+              <span class="bien" data-huong="xuong"><b>Bốc đồng</b><small class="viet-tay">dễ bị cám dỗ</small></span>
+              <i>×</i>
+              <span class="bien" data-huong="xuong"><b>Độ trễ</b><small class="viet-tay">hạn chót còn xa</small></span>
+            </div>
+          </div>
+        </div>
+        <div class="huong-thay-doi">
+          <p class="huong-len" data-cho><b>Tăng tử số</b> để muốn bắt tay vào làm</p>
+          <p class="huong-xuong" data-cho><b>Giảm mẫu số</b> để bớt muốn trì hoãn</p>
+        </div>
+        <p class="nguon">Thuyết động lực theo thời gian, Steel và König, 2006</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHẦN 3: GIẢI PHÁP (ghim: 5 dải ảnh, lăn tới bước nào thì dải đó mở ra) ============ -->
+  <section class="phan ghim" id="giai-phap" data-ten="Phần 3 / Giải pháp" data-hieu-ung="giai-phap" style="--dai:5">
+    <div class="dinh">
+      <div class="khung gp">
+        <div class="gp-dau">
+          <h2 class="tieu-de lon">5 cách <span class="da da-xanh">bắt đầu ngay</span></h2>
+          <p class="gp-dem so-lieu"><b id="gp-so">1</b> / 5</p>
+        </div>
+        <ol class="dai-anh">
+          <li style="background-image: url(anh/bam-gio.jpg)">
+            <span class="dai-nhan">Bắt đầu chỉ 5 phút</span>
+            <div class="dai-noi">
+              <h3>Bắt đầu chỉ 5 phút</h3>
+              <p>Chia việc lớn thành bước nhỏ, làm ngay bước đầu tiên.</p>
+              <em>Tăng kỳ vọng</em>
+            </div>
+          </li>
+          <li style="background-image: url(anh/so-ke-hoach.jpg)">
+            <span class="dai-nhan">Kế hoạch Nếu – Thì</span>
+            <div class="dai-noi">
+              <h3>Kế hoạch Nếu – Thì</h3>
+              <p>“Nếu 20 giờ, thì mình mở tài liệu.”</p>
+              <em>Giảm bốc đồng</em>
+              <small>94 thử nghiệm, Gollwitzer và Sheeran 2006</small>
+            </div>
+          </li>
+          <li style="background-image: url(anh/lich-ban.jpg)">
+            <span class="dai-nhan">Chia nhỏ hạn chót</span>
+            <div class="dai-noi">
+              <h3>Chia nhỏ hạn chót</h3>
+              <p>Đặt nhiều mốc nộp nhỏ thay vì một mốc cuối.</p>
+              <em>Giảm độ trễ</em>
+              <small>Ariely và Wertenbroch 2002</small>
+            </div>
+          </li>
+          <li style="background-image: url(anh/dien-thoai-up.jpg)">
+            <span class="dai-nhan">Cất điện thoại ra xa</span>
+            <div class="dai-noi">
+              <h3>Cất điện thoại ra xa</h3>
+              <p>Để trong tầm mắt thôi cũng đủ làm giảm tập trung.</p>
+              <em>Giảm bốc đồng</em>
+              <small>Ward và cộng sự 2017</small>
+            </div>
+          </li>
+          <li style="background-image: url(anh/buoi-sang.jpg)">
+            <span class="dai-nhan">Tha thứ cho bản thân</span>
+            <div class="dai-noi">
+              <h3>Tha thứ cho bản thân</h3>
+              <p>Tự trách khiến ta né việc hơn. Tha thứ giúp lần sau ít trì hoãn hơn.</p>
+              <em>Phá vòng lặp</em>
+              <small>Wohl, Pychyl và Bennett 2010</small>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KẾT (ghim, gạch dần chữ "Để mai tính" theo cuộn) ============ -->
+  <section class="phan ghim" id="ket" data-ten="Thông điệp" data-hieu-ung="ket" style="--dai:2.6">
+    <div class="dinh">
+      <div class="khung">
+        <p class="cu"><span class="gach-ngang">Để mai tính</span></p>
+        <p class="moi" data-cho>Bắt đầu ngay, <span class="da da-xanh">chỉ 5 phút.</span></p>
+        <div class="thu-thach" data-cho>
+          <span class="viet-tay">Thử thách sau buổi học</span>
+          <b class="so-lieu" id="dem-5-phut">05:00</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CẢM ƠN ============ -->
+  <section class="phan thuong cam-on" id="cam-on" data-ten="Cảm ơn" data-hieu-ung="cam-on">
+    <div class="khung">
+      <div class="cam-on-dau">
+        <h2 class="tieu-de rat-lon">Cảm ơn cô và các bạn <span class="da da-vang">đã lắng nghe</span></h2>
+        <div class="nhom">
+          <p class="nhan">Nhóm 05</p>
+          <ol class="thanh-vien">
+            <li class="truong-nhom" style="--i:0"><span><b class="da da-vang">Lương Ngọc Quang</b><small>Nhóm trưởng</small></span><span class="so-lieu">B25DCVT280</span></li>
+            <li style="--i:1"><span>Vũ Tiến Phát</span><span class="so-lieu">B25DCVT271</span></li>
+            <li style="--i:2"><span>Đặng Thái Sơn</span><span class="so-lieu">B25DCVT036</span></li>
+            <li style="--i:3"><span>Trịnh Đức Phúc</span><span class="so-lieu">B25DCVT275</span></li>
+            <li style="--i:4"><span>Bùi Đức Phong</span><span class="so-lieu">B25DCVT265</span></li>
+            <li style="--i:5"><span>Quân Anh Phạm</span><span class="so-lieu">B25DCVT289</span></li>
+            <li style="--i:6"><span>Đào Minh Quân</span><span class="so-lieu">B25DCVT294</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="tai-lieu">
+        <h3 class="nhan">Tài liệu tham khảo</h3>
+        <ol>
+          <li>Steel, P. (2007). Bản chất của sự trì hoãn: tổng hợp nghiên cứu và lý thuyết.</li>
+          <li>Steel, P. và König, C. J. (2006). Thuyết động lực theo thời gian.</li>
+          <li>Sirois, F. và Pychyl, T. (2013). Trì hoãn và việc ưu tiên cảm xúc trước mắt.</li>
+          <li>Tice, D. M. và Baumeister, R. F. (1997). Trì hoãn, kết quả học tập, căng thẳng và sức khoẻ.</li>
+          <li>Kim, K. R. và Seo, E. H. (2015). Trì hoãn và kết quả học tập: tổng hợp 33 nghiên cứu.</li>
+          <li>Johansson, F. và cộng sự (2023). Trì hoãn và sức khoẻ của 3.525 sinh viên Thụy Điển.</li>
+          <li>Gollwitzer, P. M. và Sheeran, P. (2006). Kế hoạch “Nếu – Thì” và việc đạt mục tiêu.</li>
+          <li>Ariely, D. và Wertenbroch, K. (2002). Trì hoãn, hạn chót và hiệu suất.</li>
+          <li>Ward, A. F. và cộng sự (2017). Điện thoại thông minh và khả năng tập trung.</li>
+          <li>Wohl, M., Pychyl, T. và Bennett, S. (2010). Tự tha thứ giúp giảm trì hoãn.</li>
+        </ol>
+        <p class="nguon nguon-anh">Ảnh minh hoạ: StockSnap và Rawpixel, giấy phép CC0.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

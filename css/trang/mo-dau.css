@@ -1,0 +1,65 @@
+/* =========================================================
+   BÌA: tiêu đề áp phích kẹp giữa hai đường kẻ
+   NỘI DUNG: ba phần, đường kẻ chạy theo độ cuộn
+   ========================================================= */
+.an-di { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Bìa: ảnh đêm nằm dưới một lớp giấy vẽ trên canvas, chữ được khoét rỗng để lộ ảnh.
+   Lăn chuột thì canvas vẽ lại chữ phóng to quanh nét chữ "Ì" cho tới khi ảnh tràn màn hình. */
+.bia-dinh { padding: 0; align-items: stretch; background: var(--giay); }
+.bia-anh {
+  position: absolute; inset: 0;
+  background: #0B0A1C url(../../anh/dem-dien-thoai.jpg) center / cover;
+  scale: calc(1.3 - var(--zoom-anh, 0) * .3);
+}
+.bia-anh::after { content: ""; position: absolute; inset: 0; background: #08071A; opacity: var(--toi, 0); }
+.bia-mat-na { position: absolute; inset: 0; width: 100%; height: 100%; opacity: var(--mo, 1); }
+.bia-noi {
+  position: relative; z-index: 2;
+  height: 100%;
+  display: grid; grid-template-rows: auto 1fr auto;
+  padding-top: clamp(56px, 9vh, 88px); padding-bottom: clamp(28px, 5vh, 56px);
+  opacity: var(--noi, 1);
+  pointer-events: none;
+}
+.bia-dau, .bia-chan { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; }
+.bia-dau { grid-row: 1; padding-bottom: 14px; border-bottom: 1.5px solid var(--muc); }
+.bia-chan { grid-row: 3; padding-top: 18px; border-top: 1.5px solid var(--muc); }
+.bia-phu { font-size: var(--co-dan); font-stretch: 92%; max-width: 34ch; }
+.goi-cuon { display: flex; align-items: center; gap: 12px; color: var(--muc-2); }
+.goi-cuon i { position: relative; width: 2px; height: 34px; background: var(--ke); overflow: hidden; }
+.goi-cuon i::after { content: ""; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: var(--muc); animation: chay-xuong 1.6s var(--em) infinite; }
+@keyframes chay-xuong { to { top: 100%; } }
+.bia-cau-sau {
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: 18svh;
+  text-align: center; color: #fff;
+  font-weight: 800; font-stretch: 72%; font-size: var(--co-tieu-de); line-height: 1.05;
+  padding-inline: 20px;
+  opacity: var(--sau, 0); translate: 0 calc((1 - var(--sau, 0)) * 24px);
+}
+
+.ba-phan {
+  position: relative;
+  margin-top: clamp(48px, 10vh, 112px);
+  display: grid; gap: clamp(28px, 4vw, 56px);
+}
+.ba-phan li { position: relative; padding-top: 36px; }
+.ba-phan li { opacity: clamp(0, calc((var(--p, 1) - .22 - var(--i, 0) * .05) * 9), 1); }
+.ba-phan li:nth-child(2) { --i: 1; }
+.ba-phan li:nth-child(3) { --i: 2; }
+.bp-so {
+  position: relative; display: inline-block;
+  font-weight: 900; font-stretch: 66%;
+  font-size: clamp(4.2rem, 9vw, 8.6rem); line-height: 1;
+  background: linear-gradient(var(--mau), var(--mau)) no-repeat .06em 88% / 1em 40%;
+}
+.ba-phan h3 { margin-top: 12px; font-weight: 800; font-stretch: 72%; font-size: clamp(1.5rem, 2.6vw, 2.4rem); line-height: 1.05; }
+.ba-phan p { margin-top: 8px; font-size: var(--co-vua); color: var(--muc-2); }
+@media (min-width: 900px) {
+  .ba-phan { grid-template-columns: repeat(3, 1fr); }
+  .ba-phan::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--muc);
+    transform-origin: left; transform: scaleX(clamp(0, calc((var(--p, 1) - .2) * 3.2), 1));
+  }
+  .ba-phan li::before { content: ""; position: absolute; left: 0; top: -9px; width: 3px; height: 20px; background: var(--muc); }
+}

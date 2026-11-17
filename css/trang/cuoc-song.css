@@ -1,0 +1,40 @@
+/* =========================================================
+   CUỘC SỐNG: bút dạ quang hồng quét qua từng vấn đề theo cuộn
+   ========================================================= */
+#cuoc-song .cau-so { margin-top: clamp(24px, 5vh, 56px); }
+#cuoc-song .nguon { margin-top: clamp(16px, 3vh, 28px); max-width: 40ch; }
+.van-de { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 3vh, 28px) clamp(16px, 3vw, 40px); }
+.van-de small { display: block; margin-bottom: 2px; font-size: .72rem; font-weight: 700; font-stretch: 118%; letter-spacing: .08em; text-transform: uppercase; color: var(--muc-3); }
+.van-de span {
+  font-weight: 800; font-stretch: 72%;
+  font-size: clamp(1.6rem, 3vw, 3rem); line-height: 1.08;
+  background: linear-gradient(var(--da-hong), var(--da-hong)) no-repeat 0 90% / calc(var(--to, 0) * 100%) 52%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  padding: 0 .08em; margin: 0 -.08em;
+  opacity: calc(.35 + var(--to, 0) * .65);
+}
+html:not(.co-js) .van-de li { --to: 1; }
+
+/* Hai ảnh polaroid dán băng dính, rơi xuống khi cuộn tới */
+.polaroid-cap { display: flex; gap: clamp(12px, 2vw, 24px); margin-top: clamp(18px, 4vh, 40px); }
+.polaroid {
+  position: relative; margin: 0;
+  width: clamp(120px, 12.5vw, 184px);
+  padding: 8px 8px 0;
+  background: var(--trang);
+  box-shadow: 0 1px 1px rgba(22, 20, 58, .08), 0 16px 26px -14px rgba(22, 20, 58, .45);
+  rotate: var(--xoay);
+}
+.polaroid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.polaroid figcaption { text-align: center; padding: 6px 2px 10px; font-size: clamp(.95rem, 1.2vw, 1.15rem); line-height: 1.1; }
+.polaroid::before {
+  content: ""; position: absolute; top: -9px; left: 50%; translate: -50% 0; rotate: -4deg;
+  width: 64px; height: 20px; background: rgba(255, 154, 200, .65);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .co-js .polaroid { opacity: 0; translate: 0 -40px; rotate: calc(var(--xoay) - 10deg); transition: opacity .5s, translate .9s var(--em), rotate .9s var(--em); }
+  .co-js .dang-xem .polaroid { opacity: 1; translate: 0 0; rotate: var(--xoay); transition-delay: .45s; }
+  .co-js .dang-xem .polaroid + .polaroid { transition-delay: .7s; }
+}
+#cuoc-song .tieu-de { font-size: clamp(2.2rem, 4.4vw, 4.6rem); }
+#cuoc-song .cau-so { margin-top: clamp(14px, 3vh, 28px); }

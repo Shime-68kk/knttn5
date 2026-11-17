@@ -1,0 +1,41 @@
+/* =========================================================
+   TOÀN CẦU: bản đồ chấm hiện dần theo cuộn, đường nối về Việt Nam
+   ========================================================= */
+.dau-ban-do { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 40px; }
+.dau-ban-do .cau-so { font-size: var(--co-vua); max-width: 22rem; color: var(--muc-2); }
+.dau-ban-do .so-to { color: var(--muc); font-size: 3.2em; }
+.ban-do {
+  position: relative;
+  width: min(100%, calc((100svh - 300px) * 2.571));
+  aspect-ratio: 360 / 140;
+  margin: clamp(16px, 3vh, 32px) auto 0;
+}
+.ban-do canvas, .duong-noi { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.duong-noi path { fill: none; stroke: var(--muc); stroke-width: .45; opacity: .75; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.diem li {
+  position: absolute;
+  left: calc((var(--kd) + 180) / 360 * 100%);
+  top: calc(((82 - var(--vd)) / 2 + .5) / 70 * 100%);
+  width: 0; height: 0;
+  opacity: 0; scale: .6;
+  transition: opacity .35s, scale .5s var(--em);
+}
+.diem li.hien { opacity: 1; scale: 1; }
+.diem li::before, .diem li::after { content: ""; position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; background: var(--muc); }
+.diem li::after { background: none; border: 1.5px solid var(--muc); animation: song 2.4s ease-out infinite; }
+@keyframes song { from { transform: scale(1); opacity: .9; } to { transform: scale(4); opacity: 0; } }
+.diem li > * { position: absolute; white-space: nowrap; padding: 1px 6px; background: color-mix(in srgb, var(--giay) 88%, transparent); }
+.diem b { font-size: .72rem; font-weight: 700; font-stretch: 118%; letter-spacing: .07em; text-transform: uppercase; }
+.diem span { font-size: clamp(.8rem, 1vw, .95rem); font-weight: 600; font-stretch: 88%; }
+.nhan-tren b  { bottom: 30px; left: 0; translate: -50% 0; }
+.nhan-tren span { bottom: 10px; left: 0; translate: -50% 0; }
+.nhan-duoi b  { top: 10px; left: 0; translate: -50% 0; }
+.nhan-duoi span { top: 30px; left: 0; translate: -50% 0; }
+.nhan-trai b  { right: 14px; top: -20px; }
+.nhan-trai span { right: 14px; top: 0; }
+.nhan-phai b  { left: 14px; top: -20px; }
+.nhan-phai span { left: 14px; top: 0; }
+.diem-vn::before { background: var(--do); }
+.diem-vn::after { border-color: var(--do); }
+.diem-vn span { background: var(--da-vang); }
+@media (max-width: 899px) { .diem span { display: none; } .diem li:not(.diem-vn) b { display: none; } }

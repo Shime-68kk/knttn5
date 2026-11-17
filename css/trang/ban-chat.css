@@ -1,0 +1,56 @@
+/* =========================================================
+   BẢN CHẤT: lăn chuột đưa mốc đỏ chạy hết một vòng lặp
+   ========================================================= */
+/* Ý chính viết trên mảnh giấy xé, dán băng dính */
+.giay-xe {
+  position: relative; z-index: 0; isolation: isolate;
+  margin-top: clamp(24px, 5vh, 48px);
+  max-width: 30rem;
+  padding: 34px 30px 36px;
+  rotate: -1.2deg;
+  filter: drop-shadow(0 12px 16px rgba(22, 20, 58, .16));
+}
+.giay-xe::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: #FFFFFF;
+  clip-path: polygon(0 4%, 6% 1%, 11% 4%, 17% 0, 24% 3%, 31% 1%, 37% 4%, 44% 0, 52% 3%, 58% 1%, 66% 4%, 72% 0, 79% 3%, 86% 1%, 93% 4%, 100% 1%,
+                     100% 97%, 94% 100%, 88% 96%, 81% 99%, 74% 96%, 67% 100%, 60% 97%, 53% 99%, 46% 96%, 38% 100%, 31% 96%, 24% 99%, 17% 96%, 10% 100%, 4% 97%, 0 99%);
+}
+.giay-xe::after {
+  content: ""; position: absolute; top: -10px; left: 50%; translate: -50% 0; rotate: 3deg;
+  width: 92px; height: 24px;
+  background: rgba(255, 225, 77, .7);
+}
+.giay-xe .dan { color: var(--muc); max-width: none; }
+.giay-xe .nguon { margin-top: 12px; }
+.vong-lap { position: relative; justify-self: center; width: min(100%, 520px, 68svh); aspect-ratio: 1; }
+.vong-duong { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.vong-nen { fill: none; stroke: var(--ke); stroke-width: .5; stroke-dasharray: 1 1.4; }
+.vong-chay {
+  fill: none; stroke: var(--muc-but); stroke-width: 1; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  transform: rotate(-90deg); transform-origin: 50% 50%;
+}
+.vong-moc { fill: var(--do); }
+.vong-tam { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; font-size: clamp(1.4rem, 2.2vw, 2rem); line-height: 1.1; }
+.vong-lap ol { position: absolute; inset: 0; }
+.vong-lap li {
+  position: absolute;
+  left: calc(50% + cos(var(--goc)) * 37%);
+  top: calc(50% + sin(var(--goc)) * 37%);
+  translate: -50% -50%;
+  display: grid; justify-items: center; text-align: center; gap: 2px;
+  padding: 6px 12px;
+  background: var(--giay);
+  white-space: nowrap;
+}
+.vong-lap li b {
+  font-weight: 800; font-stretch: 75%; font-size: clamp(1.1rem, 1.7vw, 1.6rem); line-height: 1.05;
+  padding: 0 .1em;
+  background: linear-gradient(var(--da-vang), var(--da-vang)) no-repeat 0 90% / 0% 52%;
+  transition: background-size .35s var(--em), color .3s;
+}
+.vong-lap li span { font-size: .8rem; color: var(--muc-3); }
+.vong-lap li.qua b { color: var(--muc-2); }
+.vong-lap li.dang b { background-size: 100% 52%; }
+@media (max-width: 599px) { .vong-lap li span { display: none; } .vong-lap li { padding: 4px 6px; } }

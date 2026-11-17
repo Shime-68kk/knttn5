@@ -1,0 +1,33 @@
+/* =========================================================
+   CON SỐ: 10 người tô dần theo cuộn, ngoặc số liệu gắn lên đúng nhóm người
+   ========================================================= */
+#con-so .tieu-de { font-size: clamp(2.2rem, 4.8vw, 4.8rem); }
+.bieu-nguoi {
+  margin-top: clamp(28px, 6vh, 64px);
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 64px));
+  column-gap: clamp(8px, 1.6vw, 22px);
+  row-gap: 14px;
+}
+.bieu-nguoi > svg {
+  grid-row: 2;
+  width: 100%; aspect-ratio: 1 / 2; height: auto;
+  fill: rgba(22, 20, 58, .12);
+  transition: fill .35s ease;
+}
+.bieu-nguoi > svg.to { fill: var(--muc); }
+.bieu-nguoi > svg.mo { fill: rgba(22, 20, 58, .45); }
+.bieu-nguoi > svg.do { fill: var(--do); }
+.ngoac { position: relative; font-size: var(--co-dan); line-height: 1.3; }
+.ngoac-tren { grid-row: 1; grid-column: 1 / 10; padding-bottom: 22px; align-self: end; }
+.ngoac-duoi { grid-row: 3; grid-column: 1 / 6; padding-top: 22px; color: var(--do); }
+.ngoac::after { content: ""; position: absolute; left: 0; right: 0; height: 10px; border: 2px solid currentColor; }
+.ngoac-tren::after { bottom: 0; border-bottom: 0; }
+.ngoac-duoi::after { top: 0; border-top: 0; }
+.ngoac .so-to {
+  display: block; width: max-content;
+  font-weight: 900; font-stretch: 66%;
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem); line-height: 1;
+  margin-bottom: 4px; font-variant-numeric: tabular-nums;
+}
+#con-so .nguon { margin-top: clamp(16px, 3vh, 32px); }

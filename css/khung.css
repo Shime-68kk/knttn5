@@ -1,0 +1,44 @@
+/* =========================================================
+   KHUNG TRANG: thanh trên cùng, các phần, phần được ghim khi cuộn
+   ========================================================= */
+.thanh-tren {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: max(18px, env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) 0 max(24px, env(safe-area-inset-left, 0px));
+  font-size: clamp(.95rem, 1.15vw, 1.1rem); font-weight: 800; font-stretch: 112%;
+  letter-spacing: .08em; text-transform: uppercase;
+  pointer-events: none;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.tien-do {
+  position: absolute; top: 0; left: 0; height: 3px; width: 100%;
+  background: #fff;
+  transform-origin: left; transform: scaleX(var(--tien-do, 0));
+}
+.thanh-phan { transition: opacity .3s; }
+
+.khung {
+  position: relative;
+  width: 100%; max-width: 1320px; margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 900px) {
+  .khung { padding-left: max(56px, env(safe-area-inset-left, 0px)); padding-right: max(56px, env(safe-area-inset-right, 0px)); }
+}
+.hai-cot { display: grid; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.hai-cot > * { min-width: 0; }
+@media (min-width: 900px) { .hai-cot { grid-template-columns: 1fr 1fr; } }
+
+.phan { position: relative; }
+.phan.thuong { padding-block: clamp(96px, 16vh, 200px); }
+/* Phần ghim: cao gấp --dai lần màn hình, nội dung dính lại trong khi cuộn qua */
+.phan.ghim { height: calc(var(--dai, 3) * 100svh); }
+.dinh {
+  position: sticky; top: 0;
+  height: 100svh;
+  display: grid; align-items: center;
+  overflow: hidden;
+  padding-block: clamp(56px, 9vh, 96px) clamp(32px, 6vh, 64px);
+}

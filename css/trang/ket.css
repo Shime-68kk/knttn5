@@ -1,0 +1,52 @@
+/* =========================================================
+   KẾT: gạch dần "Để mai tính" theo cuộn, rồi thử thách 5 phút
+   CẢM ƠN: lời cảm ơn, nhóm, tài liệu tham khảo
+   ========================================================= */
+#ket .cu {
+  font-weight: 900; font-stretch: 64%;
+  font-size: var(--co-bia); line-height: 1.02; text-transform: uppercase;
+  color: color-mix(in srgb, var(--muc-3) calc(var(--gach, 0) * 100%), var(--muc));
+}
+.gach-ngang { position: relative; }
+.gach-ngang::after {
+  content: ""; position: absolute; left: -2%; top: 50%;
+  width: calc(var(--gach, 0) * 104%); height: .09em;
+  background: var(--do); rotate: -2deg; transform-origin: left;
+}
+#ket .moi { margin-top: clamp(12px, 2.5vh, 28px); font-weight: 900; font-stretch: 66%; font-size: var(--co-lon); line-height: 1.02; }
+.thu-thach { margin-top: clamp(24px, 5vh, 56px); display: grid; justify-items: start; gap: 6px; }
+.thu-thach .viet-tay { font-size: clamp(1.3rem, 2vw, 1.8rem); }
+.thu-thach b { font-size: clamp(3rem, 7vw, 6rem); line-height: 1; }
+@media (max-width: 600px) { #ket .cu { font-size: 17vw; } }
+
+.cam-on-dau { display: grid; gap: 24px clamp(32px, 5vw, 80px); align-items: end; }
+.cam-on-dau > * { min-width: 0; }
+.nhom { display: grid; gap: 12px; min-width: min(100%, 340px); padding-left: 20px; border-left: 1px solid var(--muc); }
+/* Danh sách thành viên: họ tên bên trái, mã số sinh viên bên phải, hiện lần lượt từng người */
+.thanh-vien { display: grid; }
+.thanh-vien li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 7px 0; border-bottom: 1px solid var(--ke);
+  font-weight: 600; font-stretch: 88%; font-size: var(--co-vua);
+}
+.thanh-vien .so-lieu { font-size: .85em; color: var(--muc-2); }
+.truong-nhom { padding-block: 10px 12px !important; border-bottom-color: var(--muc) !important; }
+.truong-nhom > span:first-child { display: grid; gap: 2px; }
+.truong-nhom b { justify-self: start; font-weight: 800; font-size: 1.12em; }
+.truong-nhom small { font-size: .7rem; font-weight: 700; font-stretch: 118%; letter-spacing: .08em; text-transform: uppercase; color: var(--muc-2); }
+.truong-nhom .so-lieu { color: var(--muc); }
+@media (prefers-reduced-motion: no-preference) {
+  .co-js .thanh-vien li { opacity: 0; translate: 0 10px; transition: opacity .5s, translate .6s var(--em); transition-delay: calc(.3s + var(--i) * 90ms); }
+  .co-js .dang-xem .thanh-vien li { opacity: 1; translate: 0 0; }
+}
+@media (min-width: 900px) { .cam-on-dau { grid-template-columns: 1fr auto; } }
+.tai-lieu { margin-top: clamp(48px, 10vh, 112px); padding-top: 14px; border-top: 1.5px solid var(--muc); }
+.tai-lieu ol { margin-top: 16px; counter-reset: nguon; }
+.tai-lieu li {
+  counter-increment: nguon;
+  display: grid; grid-template-columns: 2.4em 1fr;
+  font-size: .9rem; line-height: 1.45; color: var(--muc-2);
+  break-inside: avoid; margin-bottom: 8px; text-wrap: pretty;
+}
+.tai-lieu li::before { content: counter(nguon, decimal-leading-zero); font-family: var(--chu-so); font-size: .8rem; color: var(--muc-3); padding-top: .1em; }
+@media (min-width: 900px) { .tai-lieu ol { columns: 2; column-gap: 56px; } }

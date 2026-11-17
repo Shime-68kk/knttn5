@@ -1,0 +1,25 @@
+/* =========================================================
+   DẤU HIỆU: tiêu đề đứng yên bên trái, từng dòng được tick khi cuộn qua
+   ========================================================= */
+.dau-hieu-luoi { display: grid; gap: 32px clamp(40px, 6vw, 96px); }
+.cau-hoi { margin-top: clamp(20px, 4vh, 40px); font-size: clamp(1.6rem, 2.6vw, 2.4rem); line-height: 1.15; }
+.ds-dau-hieu { border-top: 1.5px solid var(--muc); }
+.ds-dau-hieu li {
+  display: grid; grid-template-columns: auto 1fr; align-items: center;
+  column-gap: clamp(14px, 2vw, 28px); row-gap: 6px;
+  padding-block: clamp(28px, 7vh, 72px);
+  border-bottom: 1px solid var(--ke);
+  transition: opacity .4s;
+}
+.co-js .ds-dau-hieu li:not(.bat) { opacity: .35; }
+.ds-dau-hieu b { font-weight: 800; font-stretch: 75%; font-size: clamp(1.5rem, 2.8vw, 2.7rem); line-height: 1.08; }
+.ds-dau-hieu span { grid-column: 2; font-size: .95rem; color: var(--muc-3); }
+.o-tick { grid-row: span 2; position: relative; width: clamp(26px, 2.4vw, 36px); aspect-ratio: 1; border: 2px solid var(--muc); border-radius: 2px 3px 2px 4px; rotate: -2deg; }
+.o-tick svg { position: absolute; left: -15%; top: -35%; width: 140%; overflow: visible; fill: none; stroke: var(--do); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.o-tick path { stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset .45s cubic-bezier(.5, 0, .3, 1) .1s; }
+.bat .o-tick path { stroke-dashoffset: 0; }
+html:not(.co-js) .o-tick path { stroke-dashoffset: 0; }
+@media (min-width: 900px) {
+  .dau-hieu-luoi { grid-template-columns: .8fr 1.2fr; align-items: start; }
+  .dau-hieu-trai { position: sticky; top: 30vh; }
+}

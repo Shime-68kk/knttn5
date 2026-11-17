@@ -1,0 +1,47 @@
+/* =========================================================
+   GIẢI PHÁP: 5 dải ảnh dọc; lăn tới bước nào thì dải đó mở rộng, hiện màu và nội dung
+   ========================================================= */
+.gp { display: grid; gap: clamp(20px, 4vh, 44px); }
+.gp-dau { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+.gp-dem { font-size: clamp(1rem, 1.4vw, 1.3rem); color: var(--muc-3); white-space: nowrap; }
+.gp-dem b { font-weight: 500; font-size: 2.2em; color: var(--muc); }
+.dai-anh { display: flex; gap: clamp(6px, .8vw, 12px); height: min(58svh, 540px); }
+.dai-anh li {
+  position: relative; flex: 1 1 0; min-width: 0; overflow: hidden;
+  background-color: #222; background-position: center; background-size: cover;
+  filter: grayscale(1) brightness(.92);
+  transition: flex-grow .9s var(--em), filter .6s ease;
+}
+.dai-anh li.dang { flex-grow: 4.6; filter: none; }
+.dai-anh li::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10, 9, 30, .7), transparent 55%); transition: opacity .5s; }
+.dai-anh li.dang::after { opacity: .35; }
+.dai-nhan {
+  position: absolute; z-index: 1; left: 50%; bottom: 18px;
+  writing-mode: vertical-rl; rotate: 180deg; translate: -50% 0;
+  color: var(--trang); white-space: nowrap;
+  font-weight: 800; font-stretch: 75%; font-size: clamp(1rem, 1.5vw, 1.4rem);
+  transition: opacity .3s;
+}
+.dai-anh li.dang .dai-nhan { opacity: 0; }
+.dai-noi {
+  position: absolute; z-index: 2; left: clamp(12px, 1.6vw, 20px); bottom: clamp(12px, 1.6vw, 20px);
+  width: min(400px, calc(100% - 32px));
+  padding: clamp(16px, 2vw, 26px);
+  background: var(--giay);
+  display: grid; gap: 10px; justify-items: start;
+  opacity: 0; translate: 0 16px;
+  transition: opacity .3s, translate .5s var(--em);
+}
+.dai-anh li.dang .dai-noi { opacity: 1; translate: 0 0; transition-delay: .35s; }
+.dai-noi h3 { font-weight: 800; font-stretch: 72%; font-size: clamp(1.6rem, 2.6vw, 2.5rem); line-height: 1.02; }
+.dai-noi p { font-size: var(--co-dan); font-stretch: 92%; line-height: 1.35; }
+.dai-noi em {
+  font-style: normal; font-size: .75rem; font-weight: 700; font-stretch: 118%;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; background: var(--da-xanh);
+}
+.dai-noi small { font-size: .85rem; color: var(--muc-2); }
+@media (max-width: 899px) {
+  .dai-anh { flex-direction: column; height: 66svh; }
+  .dai-nhan { writing-mode: horizontal-tb; rotate: 0deg; left: 14px; bottom: 50%; translate: 0 50%; }
+}

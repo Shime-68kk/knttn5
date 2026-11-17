@@ -1,0 +1,23 @@
+/* =========================================================
+   HỌC TẬP: hai đường căng thẳng vẽ ra theo cuộn
+   ========================================================= */
+.hoc-tap-luoi { align-items: center; }
+#hoc-tap .so-ben { margin-top: clamp(24px, 5vh, 56px); padding-top: 18px; border-top: 1.5px solid var(--muc); display: grid; gap: 10px; }
+#hoc-tap .so-ben .so-to { font-size: 2em; }
+.bieu-do svg { display: block; width: 100%; height: auto; max-height: 60svh; overflow: visible; }
+.truc line { stroke: var(--muc); stroke-width: 1.5; }
+.truc-chu { font-family: var(--chu); font-weight: 700; font-stretch: 115%; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; fill: var(--muc-2); }
+.duong { fill: none; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.duong-on { stroke: var(--muc-3); stroke-width: 3.5; }
+.duong-tre { stroke: var(--do); stroke-width: 5; }
+.giao rect { fill: var(--giay); stroke: var(--muc); stroke-width: 2; }
+.giao text { font-family: var(--chu-tay); font-size: 18px; fill: var(--muc-but); }
+.nhan-duong { font-family: var(--chu); font-weight: 700; font-stretch: 85%; font-size: 16px; }
+.nhan-tre { fill: var(--do); }
+.nhan-on { fill: var(--muc-2); }
+.giao, .nhan-duong { opacity: 0; transition: opacity .4s; }
+.bieu-do.xong .giao, .bieu-do.xong .nhan-duong { opacity: 1; }
+html:not(.co-js) .giao, html:not(.co-js) .nhan-duong { opacity: 1; }
+html:not(.co-js) .duong { stroke-dashoffset: 0; }
+.ghi-cuoi { color: var(--do); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.15; rotate: -2deg; margin: 12px 0 0 auto; width: max-content; max-width: 100%; }
+.bieu-do figcaption { margin-top: 12px; }
