@@ -1,7 +1,7 @@
 /* Bộ máy cuộn: mỗi khung hình tính tiến độ cuộn của từng phần (0 → 1) và báo cho hiệu ứng của phần đó.
    Phần ghim: 0 khi phần chạm đỉnh màn hình, 1 khi sắp cuộn qua hết.
    Phần thường: 0 khi mép trên vừa ló khỏi đáy màn hình, 1 khi mép dưới vừa khuất ở đỉnh. */
-import { kep, chayDem, datLaiDem } from './tien-ich.js';
+import { kep, chayDem, datLaiDem, giamChuyenDong } from './tien-ich.js';
 import { xoaNetBut } from './but.js';
 
 export function khoiDong(hieuUng) {
@@ -10,15 +10,25 @@ export function khoiDong(hieuUng) {
   const thanhPhan = document.getElementById('thanh-phan');
   const hieu = (phan) => hieuUng[phan.dataset.hieuUng] || {};
   let cho = false;
+  let tCu = performance.now();
 
-  function capNhat() {
+  function capNhat(bayGio = performance.now()) {
     cho = false;
     const cao = innerHeight;
-    let giua = null;
+    let giua = null, conTroi = false;
+    // Bánh xe chuột nhảy từng nấc: tiến độ hiển thị đuổi theo tiến độ thật, mỗi khung hình đi 20% quãng còn lại
+    const dt = Math.min(64, Math.max(0, bayGio - tCu));
+    tCu = bayGio;
+    const he = giamChuyenDong ? 1 : 1 - Math.pow(.8, dt / 16.7);
     for (const phan of cacPhan) {
       const r = phan.getBoundingClientRect();
       const ghim = phan.classList.contains('ghim');
-      const p = ghim ? kep(-r.top / Math.max(1, r.height - cao)) : kep((cao - r.top) / (cao + r.height));
+      const muc = ghim ? kep(-r.top / Math.max(1, r.height - cao)) : kep((cao - r.top) / (cao + r.height));
+      const thay = r.bottom > 0 && r.top < cao;
+      if (phan._p === undefined || !thay) phan._p = muc;
+      else phan._p += (muc - phan._p) * he;
+      if (Math.abs(muc - phan._p) < .0004) phan._p = muc; else conTroi = true;
+      const p = phan._p;
       phan.style.setProperty('--p', p.toFixed(4));
 
       // Vào phần: chạy số nhảy, nét dạ quang, hiệu ứng riêng. Ra hẳn khỏi màn hình thì đặt lại để lần sau chạy lại.
@@ -40,6 +50,7 @@ export function khoiDong(hieuUng) {
     const tong = document.documentElement.scrollHeight - cao;
     thanhTienDo.style.setProperty('--tien-do', tong > 0 ? (scrollY / tong).toFixed(4) : 0);
     if (giua && thanhPhan.textContent !== giua.dataset.ten) thanhPhan.textContent = giua.dataset.ten;
+    if (conTroi) hen();
   }
 
   // Phần ghim có nội dung cao hơn màn hình (máy nhỏ, thanh công cụ trình duyệt chiếm chỗ): thu nhỏ cho vừa

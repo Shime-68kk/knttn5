@@ -23,6 +23,13 @@
   pointer-events: none;
 }
 .bia-dau, .bia-chan { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; }
+.chu-ky-bia {
+  grid-row: 2; align-self: end; justify-self: end;
+  margin: 0 4% 4svh 0;
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  rotate: -6deg;
+}
+@media (max-width: 699px) { .chu-ky-bia { justify-self: center; margin: 0 0 2svh; font-size: 1.6rem; } }
 .bia-dau { grid-row: 1; padding-bottom: 14px; border-bottom: 1.5px solid var(--muc); }
 .bia-chan { grid-row: 3; padding-top: 18px; border-top: 1.5px solid var(--muc); }
 .bia-phu { font-size: var(--co-dan); font-stretch: 92%; max-width: 34ch; }

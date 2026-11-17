@@ -63,8 +63,9 @@ export default function taoBia() {
       veLai(sCu > 0 ? sCu : 1);
     },
     tien(p) {
-      const z = giamChuyenDong ? 0 : doan(p, .05, .72);
-      const s = 1 + Math.pow(z, 3.2) * 90;
+      // Phóng theo hàm mũ: mỗi đoạn cuộn bằng nhau phóng to thêm cùng một tỉ lệ, nên chuyển động đều, không ì rồi vọt
+      const z = giamChuyenDong ? 0 : doan(p, .02, .7);
+      const s = Math.exp(z * Math.log(90));
       if (Math.abs(s - sCu) > .0005) veLai(s);
       dat('--mo', giamChuyenDong ? 1 - doan(p, .3, .5) : 1 - doan(p, .7, .76));
       dat('--noi', 1 - doan(p, 0, .12));

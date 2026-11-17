@@ -35,6 +35,7 @@ export default function taoHocTap() {
     tien(p) {
       duongOn.style.strokeDashoffset = 1 - doan(p, 0, .45);
       duongTre.style.strokeDashoffset = 1 - doan(p, .05, .5);
+      bieuDo.classList.toggle('bat-dau', p > .03);
       bieuDo.classList.toggle('xong', p > .5);
       batKhi(ghiCuoi, p > .58);
       batKhi(soBen, p > .74);

@@ -67,6 +67,20 @@ ol, ul { padding: 0; list-style: none; }
 .so-lieu { font-family: var(--chu-so); font-weight: 500; font-variant-numeric: tabular-nums; }
 .do { color: var(--do); }
 
+/* Chữ ký của bài: cụm "để mai tính" luôn viết tay bằng bút mực tím, bị bút đỏ gạch lượn sóng như lỗi sai.
+   Xuất hiện ở bìa, buổi tối, biểu đồ học tập; cuối bài bị gạch xoá hẳn, và lời cảm ơn khép lại bằng "không để mai". */
+.chu-ky {
+  display: inline-block;
+  font-family: var(--chu-tay); color: var(--muc-but);
+  line-height: 1.15;
+  rotate: -3deg;
+  text-decoration: underline wavy var(--do);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .28em;
+  text-decoration-skip-ink: none;
+}
+.chu-ky.tot { text-decoration: none; }
+
 /* Câu có số liệu: con số đặt to ngay trong câu */
 .cau-so { font-size: var(--co-dan); font-stretch: 92%; line-height: 1.35; max-width: 24ch; text-wrap: pretty; }
 .cau-so .so-to {

@@ -16,6 +16,7 @@ export default function taoBuoiToi() {
   const suDung = document.getElementById('dt-su-dung');
   const thongBao = [...phan.querySelectorAll('.tb')];
   const cauChot = phan.querySelector('.cau-chot');
+  const chuKy = phan.querySelector('.chu-ky-toi');
   let buocCu = 0, phut = 0, dungDem = () => {};
 
   return {
@@ -38,6 +39,7 @@ export default function taoBuoiToi() {
       dungDem();
       dungDem = hoatCanh(700, (e) => { suDung.textContent = docPhut(Math.round(tu + (phutMoi - tu) * e)); });
       thongBao.forEach((tb) => tb.classList.toggle('bat', buoc > +tb.dataset.tb));
+      batKhi(chuKy, buoc >= 4);
       batKhi(cauChot, buoc >= 5);
       // Càng về khuya, nền càng tối
       phan.style.setProperty('--dem', [0, 0, .2, .4, .6, .7][buoc]);

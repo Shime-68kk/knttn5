@@ -21,6 +21,8 @@
 
 .cam-on-dau { display: grid; gap: 24px clamp(32px, 5vw, 80px); align-items: end; }
 .cam-on-dau > * { min-width: 0; }
+.chu-ky-cuoi { margin-top: clamp(16px, 3vh, 28px); font-size: clamp(1.5rem, 2.4vw, 2.2rem); }
+.chu-ky-cuoi span { display: block; margin-top: 4px; padding-left: 40%; font-size: .75em; color: var(--muc-2); }
 .nhom { display: grid; gap: 12px; min-width: min(100%, 340px); padding-left: 20px; border-left: 1px solid var(--muc); }
 /* Danh sách thành viên: họ tên bên trái, mã số sinh viên bên phải, hiện lần lượt từng người */
 .thanh-vien { display: grid; }
