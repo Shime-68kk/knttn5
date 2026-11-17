@@ -40,14 +40,20 @@ export default function taoBia() {
     ctx.globalCompositeOperation = 'source-over';
   }
 
-  const dat = (ten, gt) => phan.style.setProperty(ten, gt.toFixed(4));
+  const anh = phan.querySelector('.bia-anh');
+  const toi = phan.querySelector('.bia-toi');
+  const noi = phan.querySelector('.bia-noi');
+  const cauSau = phan.querySelector('.bia-cau-sau');
+  // Chỉ ghi khi giá trị đổi, để trình duyệt không phải vẽ lại vô ích
+  const ghi = (el, thuocTinh, gt) => { if (el.style[thuocTinh] !== gt) el.style[thuocTinh] = gt; };
 
   return {
     // Đo lại khi đổi cỡ màn hình: cỡ chữ và tâm phóng (giữa nét dọc chữ "Ì", hơi thấp để tránh dấu huyền)
     doKich() {
       w = canvas.clientWidth; h = canvas.clientHeight;
       if (!w) return;
-      tiLe = Math.min(devicePixelRatio || 1, 2);
+      // Màn hình nét cao: vẽ canvas ở 1,25 lần là đủ sắc, đỡ nặng hơn nhiều so với 2 lần
+      tiLe = Math.min(devicePixelRatio || 1, 1.25);
       canvas.width = Math.round(w * tiLe); canvas.height = Math.round(h * tiLe);
       // Màn dọc (điện thoại): chia 3 dòng để chữ to hơn
       dong = w / h < .85 ? DONG_DOC : DONG_NGANG;
@@ -67,11 +73,13 @@ export default function taoBia() {
       const z = giamChuyenDong ? 0 : doan(p, .02, .7);
       const s = Math.exp(z * Math.log(90));
       if (Math.abs(s - sCu) > .0005) veLai(s);
-      dat('--mo', giamChuyenDong ? 1 - doan(p, .3, .5) : 1 - doan(p, .7, .76));
-      dat('--noi', 1 - doan(p, 0, .12));
-      dat('--zoom-anh', doan(p, 0, .8));
-      dat('--toi', doan(p, .78, 1) * .5);
-      dat('--sau', doan(p, .8, .93));
+      ghi(canvas, 'opacity', (giamChuyenDong ? 1 - doan(p, .3, .5) : 1 - doan(p, .7, .76)).toFixed(3));
+      ghi(noi, 'opacity', (1 - doan(p, 0, .12)).toFixed(3));
+      ghi(anh, 'transform', `scale(${(1.3 - doan(p, 0, .8) * .3).toFixed(4)})`);
+      ghi(toi, 'opacity', (doan(p, .78, 1) * .5).toFixed(3));
+      const sau = doan(p, .8, .93);
+      ghi(cauSau, 'opacity', sau.toFixed(3));
+      ghi(cauSau, 'transform', `translateY(${((1 - sau) * 24).toFixed(1)}px)`);
     },
   };
 }

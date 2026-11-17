@@ -17,10 +17,13 @@ export default function taoBuoiToi() {
   const thongBao = [...phan.querySelectorAll('.tb')];
   const cauChot = phan.querySelector('.cau-chot');
   const chuKy = phan.querySelector('.chu-ky-toi');
+  const anh = phan.querySelector('.toi-anh');
+  const dem = phan.querySelector('.toi-dem');
   let buocCu = 0, phut = 0, dungDem = () => {};
 
   return {
     tien(p) {
+      anh.style.transform = `scale(${(1 + p * .08).toFixed(4)})`;
       // 5 nấc: 4 mốc giờ rồi câu chốt
       const buoc = Math.min(5, 1 + Math.floor(p * 5));
       if (buoc === buocCu) return;
@@ -42,7 +45,7 @@ export default function taoBuoiToi() {
       batKhi(chuKy, buoc >= 4);
       batKhi(cauChot, buoc >= 5);
       // Càng về khuya, nền càng tối
-      phan.style.setProperty('--dem', [0, 0, .2, .4, .6, .7][buoc]);
+      dem.style.opacity = [0, 0, .2, .4, .6, .7][buoc];
     },
     roi() { buocCu = 0; },
   };

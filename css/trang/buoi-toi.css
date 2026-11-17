@@ -3,9 +3,9 @@
    ========================================================= */
 .toi .dinh { color: var(--trang); background: #08071A; }
 .toi .khung { z-index: 1; }
-.toi-anh { position: absolute; inset: 0; background: url(../../anh/dem-dien-thoai.jpg) center / cover; scale: calc(1 + var(--p, 0) * .08); }
+.toi-anh { position: absolute; inset: 0; background: url(../../anh/dem-dien-thoai.jpg) center / cover; will-change: transform; }
 .toi-anh::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8, 7, 26, .94) 0%, rgba(8, 7, 26, .8) 48%, rgba(8, 7, 26, .4) 100%); }
-.toi-anh::after { content: ""; position: absolute; inset: 0; background: #04030C; opacity: var(--dem, 0); transition: opacity .8s ease; }
+.toi-dem { position: absolute; inset: 0; background: #04030C; opacity: 0; transition: opacity .8s ease; }
 .toi .dong-thoi-gian li:last-child time { color: #FF7A5C; }
 .chu-ky-toi { margin-top: clamp(20px, 4vh, 36px); font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
 .toi .chu-ky-toi { color: #CFC8FF; }

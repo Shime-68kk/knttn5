@@ -8,12 +8,13 @@
   font-size: clamp(.95rem, 1.15vw, 1.1rem); font-weight: 800; font-stretch: 112%;
   letter-spacing: .08em; text-transform: uppercase;
   pointer-events: none;
-  color: #fff;
-  mix-blend-mode: difference;
+  color: var(--muc);
+  transition: color .3s;
 }
+.thanh-tren.sang { color: #fff; }
 .tien-do {
   position: absolute; top: 0; left: 0; height: 3px; width: 100%;
-  background: #fff;
+  background: currentColor;
   transform-origin: left; transform: scaleX(var(--tien-do, 0));
 }
 .thanh-phan { transition: opacity .3s; }

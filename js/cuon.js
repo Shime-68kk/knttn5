@@ -8,6 +8,7 @@ export function khoiDong(hieuUng) {
   const cacPhan = [...document.querySelectorAll('.phan')];
   const thanhTienDo = document.getElementById('tien-do');
   const thanhPhan = document.getElementById('thanh-phan');
+  const thanhTren = document.querySelector('.thanh-tren');
   const hieu = (phan) => hieuUng[phan.dataset.hieuUng] || {};
   let cho = false;
   let tCu = performance.now();
@@ -15,7 +16,7 @@ export function khoiDong(hieuUng) {
   function capNhat(bayGio = performance.now()) {
     cho = false;
     const cao = innerHeight;
-    let giua = null, conTroi = false;
+    let giua = null, conTroi = false, toiDuoiThanh = false;
     // Bánh xe chuột nhảy từng nấc: tiến độ hiển thị đuổi theo tiến độ thật, mỗi khung hình đi 20% quãng còn lại
     const dt = Math.min(64, Math.max(0, bayGio - tCu));
     tCu = bayGio;
@@ -29,7 +30,8 @@ export function khoiDong(hieuUng) {
       else phan._p += (muc - phan._p) * he;
       if (Math.abs(muc - phan._p) < .0004) phan._p = muc; else conTroi = true;
       const p = phan._p;
-      phan.style.setProperty('--p', p.toFixed(4));
+      const chuoi = p.toFixed(3);
+      if (thay && phan._pGhi !== chuoi) { phan._pGhi = chuoi; phan.style.setProperty('--p', chuoi); }
 
       // Vào phần: chạy số nhảy, nét dạ quang, hiệu ứng riêng. Ra hẳn khỏi màn hình thì đặt lại để lần sau chạy lại.
       const trongMan = r.bottom > cao * .25 && r.top < cao * .75;
@@ -46,10 +48,13 @@ export function khoiDong(hieuUng) {
       }
       if (r.bottom > 0 && r.top < cao) hieu(phan).tien?.(p, phan);
       if (r.top <= cao / 2 && r.bottom > cao / 2) giua = phan;
+      // Phần nằm ngay dưới thanh trên cùng có nền tối (ảnh đêm) thì chữ thanh chuyển trắng
+      if (r.top <= 30 && r.bottom > 30) toiDuoiThanh = phan.classList.contains('toi') || (phan.id === 'mo-dau' && p > .55);
     }
     const tong = document.documentElement.scrollHeight - cao;
     thanhTienDo.style.setProperty('--tien-do', tong > 0 ? (scrollY / tong).toFixed(4) : 0);
     if (giua && thanhPhan.textContent !== giua.dataset.ten) thanhPhan.textContent = giua.dataset.ten;
+    thanhTren.classList.toggle('sang', toiDuoiThanh);
     if (conTroi) hen();
   }
 
