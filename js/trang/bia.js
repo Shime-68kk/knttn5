@@ -3,14 +3,15 @@
    Vẽ lại từng khung hình nên phóng lớn đến đâu, lăn xuôi hay ngược cũng không bị vỡ hình. */
 import { haiSo, doan, giamChuyenDong } from '../tien-ich.js';
 
-const DONG = ['SỰ TRÌ HOÃN', 'Ở GIỚI TRẺ'];
+const DONG_NGANG = ['SỰ TRÌ HOÃN', 'Ở GIỚI TRẺ'];
+const DONG_DOC = ['SỰ TRÌ', 'HOÃN', 'Ở GIỚI TRẺ'];
 const GIAY = '#FAFAF7';
 
 export default function taoBia() {
   const phan = document.getElementById('mo-dau');
   const canvas = phan.querySelector('.bia-mat-na');
   const ctx = canvas.getContext('2d');
-  let w = 0, h = 0, co = 0, ox = 0, oy = 0, tiLe = 1, sCu = -1;
+  let w = 0, h = 0, co = 0, ox = 0, oy = 0, tiLe = 1, sCu = -1, dong = DONG_NGANG;
 
   const dongHo = document.getElementById('dem-nguoc');
   let conLai = 10 * 60 - 1;
@@ -20,7 +21,7 @@ export default function taoBia() {
   }, 1000);
 
   const datPhong = () => { ctx.font = `900 ${co}px Archivo, 'Arial Narrow', sans-serif`; ctx.fontStretch = 'extra-condensed'; };
-  const yDong = (i) => h / 2 + (i - .5) * co * .92 + co * .05;
+  const yDong = (i) => h / 2 + (i - (dong.length - 1) / 2) * co * .92 + co * .05;
 
   function veLai(s) {
     sCu = s;
@@ -35,7 +36,7 @@ export default function taoBia() {
     datPhong();
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    DONG.forEach((dong, i) => ctx.fillText(dong, w / 2, yDong(i)));
+    dong.forEach((chu, i) => ctx.fillText(chu, w / 2, yDong(i)));
     ctx.globalCompositeOperation = 'source-over';
   }
 
@@ -48,9 +49,15 @@ export default function taoBia() {
       if (!w) return;
       tiLe = Math.min(devicePixelRatio || 1, 2);
       canvas.width = Math.round(w * tiLe); canvas.height = Math.round(h * tiLe);
-      co = Math.min(w * .165, h * .27);
+      // Màn dọc (điện thoại): chia 3 dòng để chữ to hơn
+      dong = w / h < .85 ? DONG_DOC : DONG_NGANG;
+      co = 100;
       datPhong();
-      const rong = ctx.measureText(DONG[0]).width;
+      // Dòng dài nhất chiếm tối đa 88% bề ngang màn hình
+      const vua = (w * .88 * 100) / Math.max(...dong.map((chu) => ctx.measureText(chu).width));
+      co = Math.min(vua, dong === DONG_DOC ? h * .15 : h * .27);
+      datPhong();
+      const rong = ctx.measureText(dong[0]).width;
       ox = w / 2 - rong / 2 + ctx.measureText('SỰ TR').width + ctx.measureText('Ì').width / 2;
       oy = yDong(0) + co * .14;
       veLai(sCu > 0 ? sCu : 1);

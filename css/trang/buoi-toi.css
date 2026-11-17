@@ -57,4 +57,20 @@
 .tb-pin { background: rgba(215, 53, 28, .8); }
 .dt-su-dung { margin-top: auto; font-size: .75rem; opacity: .9; display: grid; gap: 2px; text-align: center; }
 .dt-su-dung b { font-family: var(--chu-so); font-size: 1.1rem; font-weight: 500; }
-@media (max-width: 899px) { .dien-thoai { rotate: 0deg; width: min(170px, 38svh * 9 / 19); } #buoi-toi .hai-cot { gap: 20px; } }
+@media (max-width: 899px) {
+  #buoi-toi .hai-cot { gap: 16px; align-content: center; }
+  #buoi-toi .dong-thoi-gian { gap: 10px; margin-top: 16px; }
+  #buoi-toi .cau-chot { margin-top: 18px; }
+  .dien-thoai { rotate: 0deg; width: min(150px, 32svh * 9 / 19); padding: 6px; border-radius: 26px; }
+  .man-hinh { border-radius: 21px; }
+  .man-hinh::before { top: 7px; height: 14px; }
+  .dt-gio { font-size: 2.1rem; }
+  .dt-ngay { font-size: .7rem; }
+  .dt-ngay { display: none; }
+  .dt-thong-bao { margin-top: 8%; gap: 5px; }
+  .tb { font-size: .62rem; padding: 6px 8px; border-radius: 10px; }
+  .tb:nth-child(3) { display: none; }
+  .tb b { font-size: .58rem; }
+  .dt-su-dung span { display: none; }
+  .dt-su-dung b { font-size: .7rem; white-space: nowrap; }
+}

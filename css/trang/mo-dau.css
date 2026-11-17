@@ -30,6 +30,8 @@
 .goi-cuon i { position: relative; width: 2px; height: 34px; background: var(--ke); overflow: hidden; }
 .goi-cuon i::after { content: ""; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: var(--muc); animation: chay-xuong 1.6s var(--em) infinite; }
 @keyframes chay-xuong { to { top: 100%; } }
+.chi-cham { display: none; }
+@media (hover: none) and (pointer: coarse) { .chi-chuot { display: none; } .chi-cham { display: inline; } }
 .bia-cau-sau {
   position: absolute; z-index: 3; left: 0; right: 0; bottom: 18svh;
   text-align: center; color: #fff;

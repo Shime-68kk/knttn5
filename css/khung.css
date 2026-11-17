@@ -17,6 +17,8 @@
   transform-origin: left; transform: scaleX(var(--tien-do, 0));
 }
 .thanh-phan { transition: opacity .3s; }
+/* Điện thoại: chữ trên thanh dễ đè lên tiêu đề khi cuộn, chỉ giữ vạch tiến độ */
+@media (max-width: 699px) { .thanh-nhom, .thanh-phan { display: none; } }
 
 .khung {
   position: relative;
