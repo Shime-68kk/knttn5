@@ -1,48 +1,30 @@
-# Sự trì hoãn ở giới trẻ — Nhóm 05
+# Sự trì hoãn ở giới trẻ
 
-Bài thuyết trình dạng trang cuộn cho môn Kỹ năng thuyết trình.
+Bài thuyết trình môn Kỹ năng thuyết trình của Nhóm 05, về sự trì hoãn ở giới trẻ và những ảnh hưởng đến học tập, cuộc sống.
 
-## Chạy thử trên máy
+**Xem trực tuyến:** https://shime-68kk.github.io/knttn5/
 
-Trình duyệt chặn module JS khi mở thẳng file, nên cần một máy chủ tĩnh:
+## Nội dung
 
-```bash
-python3 -m http.server 8000
-```
+- **Mở đầu:** một buổi tối quen thuộc của sinh viên
+- **Phần 1:** bản chất và dấu hiệu của sự trì hoãn
+- **Phần 2:** ảnh hưởng đến học tập và cuộc sống
+- **Phần 3:** những cách để bắt đầu ngay
 
-Rồi mở http://localhost:8000. Cần có mạng để tải font từ Google Fonts.
+## Cách xem
 
-## Đưa lên GitHub Pages
+Mở link trên trình duyệt máy tính rồi lăn chuột để đi qua từng phần.
 
-Đẩy cả thư mục lên một repo, vào **Settings → Pages**, chọn nhánh `main`, thư mục `/ (root)`.
+## Thành viên
 
-## Điều khiển khi trình chiếu
+- Lương Ngọc Quang (nhóm trưởng)
+- Vũ Tiến Phát
+- Đặng Thái Sơn
+- Trịnh Đức Phúc
+- Bùi Đức Phong
+- Quân Anh Phạm
+- Đào Minh Quân
 
-Bài là một trang cuộn dài. Chỉ cần lăn chuột: các phần quan trọng được ghim lại và hiệu ứng chạy theo đúng độ lăn (điện thoại đổi giờ, mốc chạy quanh vòng lặp, hình người tô dần, biểu đồ vẽ ra, thẻ giải pháp trượt ngang…). Lăn ngược lên thì mọi thứ chạy lùi theo.
+## Nguồn
 
-Bàn phím cũng dùng được: `↓` `PageDown` `Space` để cuộn xuống, `↑` `PageUp` để cuộn lên, `Home` / `End` về đầu / cuối trang, `F11` để toàn màn hình.
-
-## Cấu trúc
-
-```
-index.html              nội dung 13 phần
-css/goc.css             màu, chữ, bút dạ quang, câu số liệu
-css/khung.css           thanh trên cùng, khung trang, phần được ghim khi cuộn
-css/hieu-ung.css        ý chờ hiện khi cuộn tới, nét bút viết tay
-css/trang/*.css         giao diện riêng của từng phần
-js/main.js              điểm khởi động
-js/cuon.js              bộ máy cuộn: tính tiến độ từng phần, báo cho hiệu ứng
-js/but.js               nét bút viết tay: khoanh tròn, gạch chân, gạch xoá
-js/tien-ich.js          số nhảy, hoạt cảnh, hàm tính tiến độ
-js/trang/*.js           hiệu ứng theo cuộn của từng phần
-js/du-lieu/ban-do.js    lưới chấm bản đồ thế giới (Natural Earth)
-anh/                    ảnh minh hoạ (CC0, nguồn ghi trong anh/nguon.json)
-```
-
-## Thay ảnh
-
-Ảnh nằm trong thư mục `anh/`. Muốn dùng ảnh của nhóm thì chép ảnh mới đè lên đúng tên tệp cũ (ví dụ `anh/co-don.jpg`), nên dùng ảnh ngang, rộng khoảng 1200–1800px.
-
-## Thêm tên thành viên
-
-Trong `index.html`, tìm `<ul class="thanh-vien">` ở phần Cảm ơn và thêm mỗi người một dòng `<li>Họ và tên</li>`.
+Số liệu trích từ các nghiên cứu khoa học, danh sách đầy đủ ở cuối bài thuyết trình. Ảnh minh hoạ dùng giấy phép CC0.
