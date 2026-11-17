@@ -1,5 +1,7 @@
 /* Điểm khởi động: đăng ký hiệu ứng theo cuộn của từng phần rồi bật bộ máy cuộn. */
 import { khoiDong } from './cuon.js';
+import { ganChuKyBay } from './chu-ky-bay.js';
+import { ganCuonMuot } from './cuon-muot.js';
 import taoBia from './trang/bia.js';
 import taoBuoiToi from './trang/buoi-toi.js';
 import taoBanChat from './trang/ban-chat.js';
@@ -11,6 +13,9 @@ import taoCuocSong from './trang/cuoc-song.js';
 import taoCongThuc from './trang/cong-thuc.js';
 import taoGiaiPhap from './trang/giai-phap.js';
 import taoKet from './trang/ket.js';
+
+ganChuKyBay();
+ganCuonMuot();
 
 khoiDong({
   'bia': taoBia(),
@@ -25,3 +30,4 @@ khoiDong({
   'giai-phap': taoGiaiPhap(),
   'ket': taoKet(),
 });
+

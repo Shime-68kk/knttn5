@@ -76,8 +76,9 @@ export default function taoBia() {
       ghi(canvas, 'opacity', (giamChuyenDong ? 1 - doan(p, .3, .5) : 1 - doan(p, .7, .76)).toFixed(3));
       ghi(noi, 'opacity', (1 - doan(p, 0, .12)).toFixed(3));
       ghi(anh, 'transform', `scale(${(1.3 - doan(p, 0, .8) * .3).toFixed(4)})`);
-      ghi(toi, 'opacity', (doan(p, .78, 1) * .5).toFixed(3));
-      const sau = doan(p, .8, .93);
+      ghi(toi, 'opacity', (doan(p, .78, 1) * .35).toFixed(3));
+      // Câu dẫn hiện lên rồi mờ đi ở những nấc cuối, nhường chỗ cho Một buổi tối
+      const sau = doan(p, .76, .86) * (1 - doan(p, .95, 1));
       ghi(cauSau, 'opacity', sau.toFixed(3));
       ghi(cauSau, 'transform', `translateY(${((1 - sau) * 24).toFixed(1)}px)`);
     },

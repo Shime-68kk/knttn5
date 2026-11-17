@@ -6,9 +6,17 @@ export default function taoBanChat() {
   const chay = vong.querySelector('.vong-chay');
   const moc = vong.querySelector('.vong-moc');
   const cacBuoc = [...vong.querySelectorAll('li')];
+  // Câu trên mảnh giấy xé: tách từng chữ để sáng dần theo cú lăn
+  const cauGiay = document.querySelector('#ban-chat .giay-xe .dan');
+  cauGiay.innerHTML = cauGiay.textContent.trim().split(/\s+/).map((t) => `<span class="chu">${t}</span>`).join(' ');
+  const chu = [...cauGiay.querySelectorAll('.chu')];
+  let soSang = -1;
 
   return {
     tien(p) {
+      // Chữ sáng hết trong 40% đầu của phần, trước khi mốc đỏ chạy quá nửa vòng
+      const n = Math.round(Math.min(1, p / .4) * chu.length);
+      if (n !== soSang) { soSang = n; chu.forEach((c, i) => c.classList.toggle('sang', i < n)); }
       const g = -Math.PI / 2 + p * Math.PI * 2;
       moc.setAttribute('transform', `translate(${(TAM + Math.cos(g) * BAN_KINH).toFixed(2)} ${(TAM + Math.sin(g) * BAN_KINH).toFixed(2)}) rotate(${p * 360})`);
       chay.style.strokeDashoffset = 1 - p;
