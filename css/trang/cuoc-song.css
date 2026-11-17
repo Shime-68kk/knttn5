@@ -38,3 +38,13 @@ html:not(.co-js) .van-de li { --to: 1; }
 }
 #cuoc-song .tieu-de { font-size: clamp(2.2rem, 4.4vw, 4.6rem); }
 #cuoc-song .cau-so { margin-top: clamp(14px, 3vh, 28px); }
+@media (max-width: 699px) {
+  #cuoc-song .hai-cot { gap: 18px; }
+  .polaroid-cap { margin-top: 14px; }
+  .polaroid { width: min(30vw, 15svh); padding: 5px 5px 0; }
+  .polaroid figcaption { font-size: .82rem; padding: 4px 2px 6px; }
+  #cuoc-song .nguon { font-size: .75rem; margin-top: 10px; }
+  .van-de { gap: 10px 16px; }
+  .van-de span { font-size: 1.45rem; }
+  .van-de small { font-size: .64rem; }
+}

@@ -21,3 +21,8 @@ html:not(.co-js) .giao, html:not(.co-js) .nhan-duong { opacity: 1; }
 html:not(.co-js) .duong { stroke-dashoffset: 0; }
 .ghi-cuoi { color: var(--do); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.15; rotate: -2deg; margin: 12px 0 0 auto; width: max-content; max-width: 100%; }
 .bieu-do figcaption { margin-top: 12px; }
+@media (max-width: 699px) {
+  .bieu-do svg { max-height: 34svh; }
+  #hoc-tap .hai-cot { gap: 16px; }
+  #hoc-tap .so-ben { margin-top: 14px; padding-top: 12px; }
+}

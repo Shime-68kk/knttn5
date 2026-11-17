@@ -54,3 +54,8 @@
 .vong-lap li.qua b { color: var(--muc-2); }
 .vong-lap li.dang b { background-size: 100% 52%; }
 @media (max-width: 599px) { .vong-lap li span { display: none; } .vong-lap li { padding: 4px 6px; } }
+@media (max-width: 699px) {
+  #ban-chat .hai-cot { gap: 16px; }
+  .vong-lap { width: min(100%, 40svh); }
+  .giay-xe { margin-top: 16px; padding: 22px 20px 24px; }
+}

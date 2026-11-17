@@ -42,10 +42,23 @@ export function khoiDong(hieuUng) {
     if (giua && thanhPhan.textContent !== giua.dataset.ten) thanhPhan.textContent = giua.dataset.ten;
   }
 
+  // Phần ghim có nội dung cao hơn màn hình (máy nhỏ, thanh công cụ trình duyệt chiếm chỗ): thu nhỏ cho vừa
+  function doVua() {
+    document.querySelectorAll('.phan.ghim .dinh > .khung').forEach((khung) => {
+      const dinh = khung.parentElement;
+      khung.style.setProperty('--vua', 1);
+      const cs = getComputedStyle(dinh);
+      const cho = dinh.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      const can = khung.scrollHeight;
+      if (can > cho + 1) khung.style.setProperty('--vua', ((cho / can) * .96).toFixed(3));
+    });
+  }
+
   const hen = () => { if (!cho) { cho = true; requestAnimationFrame(capNhat); } };
   addEventListener('scroll', hen, { passive: true });
-  addEventListener('resize', () => { cacPhan.forEach((p) => hieu(p).doKich?.(p)); hen(); });
+  addEventListener('resize', () => { cacPhan.forEach((p) => hieu(p).doKich?.(p)); doVua(); hen(); });
   cacPhan.forEach((p) => hieu(p).doKich?.(p));
+  doVua();
   capNhat();
-  document.fonts?.ready.then(() => { cacPhan.forEach((p) => hieu(p).doKich?.(p)); capNhat(); });
+  document.fonts?.ready.then(() => { cacPhan.forEach((p) => hieu(p).doKich?.(p)); doVua(); capNhat(); });
 }
