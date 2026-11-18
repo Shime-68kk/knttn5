@@ -1,7 +1,11 @@
 /* Chuyển động chung. Nội dung hiện sẵn; khi có JS, những ý chờ tới lượt (data-cho) ẩn cho đến khi cuộn tới. */
 @media (prefers-reduced-motion: no-preference) {
-  .co-js .phan .da { background-size: 0% 52%; transition: background-size .8s var(--em) .2s; }
-  .co-js .phan.dang-xem .da { background-size: 100% 52%; }
+  /* Nét dạ quang quét ngang từ trái sang phải khi chữ vào màn hình (js/to-da.js), chữ giữ nguyên */
+  .co-js .phan .da { background-size: 0% var(--cao-da, 52%); transition: background-size .38s cubic-bezier(.4, 0, .6, 1); }
+  .co-js .phan .da.da-chay { background-size: 100% var(--cao-da, 52%); transition-duration: .95s; transition-timing-function: cubic-bezier(.6, .05, .25, 1); transition-delay: .25s; }
+  /* Câu hiện sau (data-cho): đợi câu hiện rõ rồi mới tô */
+  .co-js .phan [data-cho]:not(.bat) .da.da-chay { background-size: 0% var(--cao-da, 52%); }
+  .co-js .phan [data-cho].bat .da.da-chay { transition-delay: .55s; }
 }
 
 .co-js [data-cho] { opacity: 0; transition: opacity .5s var(--em), translate .7s var(--em); }

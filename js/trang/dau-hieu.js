@@ -10,7 +10,9 @@ export default function taoDauHieu() {
     tien() {
       const vach = innerHeight * .62;
       dong.forEach((li) => li.classList.toggle('bat', li.getBoundingClientRect().top < vach));
-      batKhi(cauHoi, dong.at(-1).classList.contains('bat'));
+      // Máy tính: câu hỏi hiện sau dòng cuối. Điện thoại xếp câu hỏi lên trên danh sách, nên hiện khi chính nó vào màn hình.
+      const q = cauHoi.getBoundingClientRect().top;
+      batKhi(cauHoi, dong.at(-1).classList.contains('bat') || (q < dong[0].getBoundingClientRect().top && q < innerHeight * .8));
     },
   };
 }

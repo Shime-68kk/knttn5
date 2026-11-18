@@ -21,7 +21,7 @@ export default function taoBia() {
   }, 1000);
 
   const datPhong = () => { ctx.font = `900 ${co}px Archivo, 'Arial Narrow', sans-serif`; ctx.fontStretch = 'extra-condensed'; };
-  const yDong = (i) => h / 2 + (i - (dong.length - 1) / 2) * co * .92 + co * .05;
+  const yDong = (i) => h / 2 + (i - (dong.length - 1) / 2) * co * 1.12 + co * .05;
 
   function veLai(s) {
     sCu = s;

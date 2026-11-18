@@ -13,7 +13,7 @@
 .chu-ky-toi { margin-top: clamp(20px, 4vh, 36px); font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
 .toi .chu-ky-toi { color: #CFC8FF; }
 .chu-ky-toi + .cau-chot { margin-top: clamp(14px, 2.5vh, 24px); }
-.toi .cau-chot .da { color: var(--muc); background-size: 100% 100% !important; background-position: 0 0; padding: .04em .18em; }
+.toi .cau-chot .da { --cao-da: 100%; color: var(--muc); background-position: 0 0; padding: .04em .18em; }
 .dong-thoi-gian { display: grid; gap: clamp(14px, 2.6vh, 26px); margin-top: clamp(24px, 4vh, 44px); }
 .dong-thoi-gian li {
   display: grid; grid-template-columns: 5.2em 1fr; align-items: baseline; gap: 12px;
@@ -80,3 +80,6 @@
   .dt-su-dung span { display: none; }
   .dt-su-dung b { font-size: .7rem; white-space: nowrap; }
 }
+/* Trên nền đêm: chữ trắng cho dễ đọc, nét hồng quét qua thì chữ chuyển sang mực */
+.toi .cau-chot .da { color: #fff; }
+.toi .cau-chot.bat .da.da-chay { color: var(--muc); transition: background-size .95s cubic-bezier(.6, .05, .25, 1) .55s, color .35s ease .85s; }

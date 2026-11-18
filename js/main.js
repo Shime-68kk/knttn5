@@ -2,6 +2,7 @@
 import { khoiDong } from './cuon.js';
 import { ganChuKyBay } from './chu-ky-bay.js';
 import { ganCuonMuot } from './cuon-muot.js';
+import { ganToDa } from './to-da.js';
 import taoBia from './trang/bia.js';
 import taoBuoiToi from './trang/buoi-toi.js';
 import taoBanChat from './trang/ban-chat.js';
@@ -16,6 +17,7 @@ import taoKet from './trang/ket.js';
 
 ganChuKyBay();
 ganCuonMuot();
+ganToDa();
 
 khoiDong({
   'bia': taoBia(),
