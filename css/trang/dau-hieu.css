@@ -3,6 +3,8 @@
    ========================================================= */
 .dau-hieu-luoi { display: grid; gap: 32px clamp(40px, 6vw, 96px); }
 .cau-hoi { margin-top: clamp(20px, 4vh, 40px); font-size: clamp(1.6rem, 2.6vw, 2.4rem); line-height: 1.15; }
+/* Câu tự trả lời của người nói: màn hình đỡ lời khi cả lớp ngại trả lời */
+.tu-dap { margin-top: .5em; font-size: clamp(1.25rem, 1.9vw, 1.75rem); rotate: -2deg; transform-origin: 0 50%; }
 .ds-dau-hieu { border-top: 1.5px solid var(--muc); }
 .ds-dau-hieu li {
   display: grid; grid-template-columns: auto 1fr; align-items: center;

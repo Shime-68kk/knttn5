@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Để Mai Tính</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<script>
+  // Điện thoại xoay ngang: dựng trang ở bề rộng 1280px như máy chiếu rồi thu nhỏ cho vừa, để xem trước đúng bố cục lúc trình chiếu
+  (function () {
+    if (Math.min(screen.width, screen.height) >= 600) return;
+    var meta = document.querySelector('meta[name=viewport]'), goc = meta.content, ngang = matchMedia('(orientation: landscape)');
+    var dat = function () { meta.content = ngang.matches ? 'width=1280, viewport-fit=cover' : goc; };
+    dat();
+    ngang.addEventListener('change', dat);
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=Patrick+Hand&display=swap">
@@ -209,6 +219,7 @@
       <div class="dau-hieu-trai">
         <h2 class="tieu-de lon">5 dấu hiệu nhận biết</h2>
         <p class="cau-hoi viet-tay" data-cho>Bạn thấy mình trong <span class="da da-vang">mấy dấu hiệu?</span></p>
+        <p class="tu-dap chu-ky" data-cho>Người làm slide này: đủ cả 5.</p>
       </div>
       <ol class="ds-dau-hieu">
         <li><i class="o-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c3 2 4 4 6 6 3-6 7-11 12-15" /></svg></i><b>Chỉ bắt tay vào làm khi sát hạn chót</b><span>Làm dồn vào đêm cuối</span></li>
